@@ -1,0 +1,31 @@
+﻿@model ApkaAnalizatorDomain.Enties.HL7
+@{
+    ViewData["Title"] = "Dodaj Analizator";
+}
+
+<div class="container mt-4">
+    <h2>Dodaj nową integracje z  Hl7</h2>
+    <hr>
+
+    <form method="post" asp-controller="Hl7" asp-action="Create">
+        <div class="form-group">
+            <label asp-for="Name">Nazwa Integracji:</label>
+            <input asp-for="Name" class="form-control" required>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NameClient">Klient:</label>
+            <input asp-for="NameClient" class="form-control" required>
+            <span asp-validation-for="NameClient" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description">Opis:</label>
+            <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Dodaj nową integracje</button>
+    </form>
+</div>

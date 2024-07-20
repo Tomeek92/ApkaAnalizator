@@ -1,0 +1,33 @@
+﻿@model ApkaAnalizatorDomain.Enties.Analizator
+@{
+    ViewData["Title"] = "Dodaj Analizator";
+}
+
+<div class="container mt-4">
+    <h2>Dodaj nowy analizator</h2>
+    <hr>
+    <p>
+        <a asp-controller="Home" asp-action="Analizator">Dodaj</a>
+    </p>
+    <form method="post" asp-controller="Analizator" asp-action="Create">
+        <div class="form-group">
+            <label asp-for="Name">Nazwa Analizatora:</label>
+            <input asp-for="Name" class="form-control" required>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NameClient">Klient:</label>
+            <input asp-for="NameClient" class="form-control" required>
+            <span asp-validation-for="NameClient" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description">Opis:</label>
+            <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Dodaj Analizator</button>
+    </form>
+</div>
