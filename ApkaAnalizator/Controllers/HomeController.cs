@@ -33,5 +33,9 @@ namespace ApkaAnalizator.Controllers
         {
             return View();
         }
+        public IActionResult Page()
+        {
+            return View();
+        }
     }
 }

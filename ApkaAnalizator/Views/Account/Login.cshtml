@@ -12,7 +12,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: url('/img/Radiologie-AdobeStock_236237514-516ae778.jpg') no-repeat center center;
         }
 
         .login-form {
@@ -25,40 +25,57 @@
             text-align: center;
         }
 
-        .login-form h1 {
-            margin-bottom: 20px;
-        }
+            .login-form h1 {
+                margin-bottom: 20px;
+            }
 
-        .login-form input[type="text"],
-        .login-form input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            box-sizing: border-box;
-        }
+            .login-form input[type="text"],
+            .login-form input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                box-sizing: border-box;
+            }
 
-        .login-form button {
-            width: 100%;
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+            .login-form button {
+                width: 100%;
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 10px;
+                margin-top: 10px;
+                border-radius: 3px;
+                cursor: pointer;
+            }
 
-        .login-form button:hover {
-            background-color: #b9273d;
-        }
+                .login-form button:hover {
+                    background-color: #b9273d;
+                }
 
             .login-form .logo-img {
-                width: 150px; 
-                margin-bottom: 20px; 
+                width: 150px;
+                margin-bottom: 20px;
+            }
+
+        .form-group {
+            position: relative;
+        }
+
+            .form-group i {
+                position: absolute;
+                left: 10px;
+                top: 40%;
+                transform: translateY(-50%);
+                color: #999;
+            }
+
+            .form-group input {
+                padding-left: 40px;
             }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="login-form">
@@ -67,13 +84,21 @@
         <form asp-controller="Account" asp-action="Login" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
+                <i class="fas fa-user"></i>
                 <label asp-for="@Model.UserName">Nazwa Użytkownika</label>
-                <input asp-for="@Model.UserName" class="form-control" />
+                <input asp-for="@Model.UserName" class="form-control" placeholder="Nazwa użytkownika" />
                 <span asp-validation-for="@Model.UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <i class="fas fa-envelope"></i>
+                <label asp-for="@Model.Email">Email</label>
+                <input asp-for="@Model.Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
                 <label asp-for="@Model.PasswordHash">Hasło</label>
-                <input asp-for="@Model.PasswordHash" type="password" class="form-control" />
+                <input asp-for="@Model.PasswordHash" type="password" class="form-control" placeholder="Hasło" />
                 <span asp-validation-for="@Model.PasswordHash" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Zaloguj</button>

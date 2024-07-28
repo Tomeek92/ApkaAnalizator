@@ -1,35 +1,111 @@
 ﻿@model ApkaAnalizatorDomain.Enties.Account
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Rejestracja";
 }
 
-<h1>Register</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <h4>Tworzenie konta.</h4>
-            <hr />
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Rejestracja</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/img/Radiologie-AdobeStock_236237514-516ae778.jpg') no-repeat center center;
+        }
+
+        .register-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+            .register-form h1 {
+                margin-bottom: 20px;
+            }
+
+            .register-form input[type="text"],
+            .register-form input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                box-sizing: border-box;
+            }
+
+            .register-form button {
+                width: 100%;
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 10px;
+                margin-top: 10px;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+                .register-form button:hover {
+                    background-color: #b9273d;
+                }
+
+            .register-form .logo-img {
+                width: 150px;
+                margin-bottom: 20px;
+            }
+
+        .form-group {
+            position: relative;
+        }
+
+            .form-group i {
+                position: absolute;
+                left: 10px;
+                top: 45%;
+                transform: translateY(-50%);
+                color: #999;
+            }
+
+            .form-group input {
+                padding-left: 40px;
+            }
+    </style>
+</head>
+<body>
+    <div class="register-form">
+        <img src="~/img/NX-Polska.png" alt="Logo" class="logo-img" />
+        <h1>Rejestracja</h1>
+        <form asp-controller="Account" asp-action="Register" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="@Model.UserName"></label>
-                <input asp-for="@Model.UserName" class="form-control" />
+                <i class="fas fa-user"></i>
+                <label asp-for="@Model.UserName" class="form-label">Nazwa użytkownika</label>
+                <input asp-for="@Model.UserName" class="form-control" placeholder="Nazwa użytkownika" />
                 <span asp-validation-for="@Model.UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Email"></label>
-                <input asp-for="@Model.Email" class="form-control" />
+                <i class="fas fa-envelope"></i>
+                <label asp-for="@Model.Email" class="form-label"></label>
+                <input asp-for="@Model.Email" class="form-control" placeholder="Email" />
                 <span asp-validation-for="@Model.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.PasswordHash"></label>
-                <input asp-for="@Model.PasswordHash" type="password" class="form-control" />
+                <i class="fas fa-lock"></i>
+                <label asp-for="@Model.PasswordHash" class="form-label">Hasło</label>
+                <input asp-for="@Model.PasswordHash" type="password" class="form-control" placeholder="Hasło" />
                 <span asp-validation-for="@Model.PasswordHash" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary w-100">Utwórz konto</button>
         </form>
     </div>
-</div>
-@section Scripts {
     <partial name="_ValidationScriptsPartial" />
-}
+</body>
+</html>
+
+

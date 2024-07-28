@@ -1,31 +1,107 @@
 ﻿@model ApkaAnalizatorDomain.Enties.HL7
 @{
-    ViewData["Title"] = "Dodaj Analizator";
+    ViewData["Title"] = "Dodaj podłączenie z Hl7";
 }
 
-<div class="container mt-4">
-    <h2>Dodaj nową integracje z  Hl7</h2>
-    <hr>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(../img/shutterstock_1169699956-f48817de.jpg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-    <form method="post" asp-controller="Hl7" asp-action="Create">
-        <div class="form-group">
-            <label asp-for="Name">Nazwa Integracji:</label>
-            <input asp-for="Name" class="form-control" required>
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
+        .container {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            margin: 30px auto;
+        }
 
-        <div class="form-group">
-            <label asp-for="NameClient">Klient:</label>
-            <input asp-for="NameClient" class="form-control" required>
-            <span asp-validation-for="NameClient" class="text-danger"></span>
-        </div>
+        h2 {
+            color: #b9273d;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
 
-        <div class="form-group">
-            <label asp-for="Description">Opis:</label>
-            <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
+        hr {
+            border: 0;
+            border-top: 2px solid #1976d2;
+            margin: 20px 0;
+        }
 
-        <button type="submit" class="btn btn-dark">Dodaj nową integracje</button>
-    </form>
-</div>
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #cfd8dc;
+            padding: 15px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+            .form-control:focus {
+                border-color: #1976d2;
+                box-shadow: 0 0 0 0.2rem rgba(25, 118, 210, 0.25);
+            }
+
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .btn-dark {
+            background-color: #333;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            padding: 10px 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+            .btn-dark:hover {
+                background-color: #b9273d;
+                color: #fff;
+            }
+
+        .text-danger {
+            font-size: 0.875em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Dodaj nową integracje z Hl7</h2>
+        <hr>
+        <a href="@Url.Action("Index", "Hl7")" class="btn btn-dark mb-3">Lista podłączeń</a>
+        <form method="post" asp-controller="Hl7" asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Name">Nazwa Integracji:</label>
+                <input asp-for="Name" class="form-control" required>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NameClient">Klient:</label>
+                <input asp-for="NameClient" class="form-control" required>
+                <span asp-validation-for="NameClient" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description">Opis:</label>
+                <textarea asp-for="Description" class="form-control" rows="4" required></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-dark">Dodaj nową integracje</button>
+        </form>
+    </div>
+</body>
+</html>
