@@ -22,7 +22,7 @@ namespace ApkaAnalizator.Controllers
                 return BadRequest("Nieprawidłowe hasło albo login");
             }
 
-            return View(login);
+          return  RedirectToAction("Page", "Home");
         }
         public IActionResult Login()
         {

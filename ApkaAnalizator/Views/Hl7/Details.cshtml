@@ -1,0 +1,70 @@
+﻿@model ApkaAnalizatorDomain.Enties.HL7
+
+@{
+    ViewData["Title"] = "Szczegóły integracji z Hl7";
+}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('/img/Zahnrad-c45557cb.jpg') no-repeat center center;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        h2 {
+            color: #b9273d;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: black;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #1976d2;
+            font-weight: 600;
+        }
+
+            .btn-back:hover {
+                color: #b9273d;
+            }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Szczegóły integracji z Hl7</h2>
+        <hr>
+       <h3> Nazwa: @Model.Name</h3>
+        <h3>Opis: @Model.Description</h3>
+        <a asp-action="Index" class="btn-back">Powrót do listy</a>
+    </div>
+</body>
+</html>
+

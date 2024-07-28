@@ -7,6 +7,40 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ApkaAnalizator.styles.css" asp-append-version="true" />
+    <style>
+        .navbar-nav .nav-item .nav-link {
+            position: relative;
+            overflow: hidden;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+            .navbar-nav .nav-item .nav-link:before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: #b9273d;
+                visibility: hidden;
+                transform: scaleX(0);
+                transition: all 0.3s ease-in-out;
+            }
+
+            .navbar-nav .nav-item .nav-link:hover {
+                color: #b9273d;
+            }
+
+                .navbar-nav .nav-item .nav-link:hover:before {
+                    visibility: visible;
+                    transform: scaleX(1);
+                }
+
+        .navbar-collapse.collapse {
+            transition: height 0.3s ease;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,22 +57,20 @@
                     <ul class="navbar-nav flex-grow-1">
                         @if (User.Identity.IsAuthenticated)
                         {
-
-
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home"  asp-action="Analizator">Dodaj nowy Analizator</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Analizator">Dodaj nowy Analizator</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home"  asp-action="Hl7">Dodaj nową integracje z Hl7</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Hl7">Dodaj nową integracje z Hl7</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Analizator"  asp-action="Index">Lista analizatorów</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Analizator" asp-action="Index">Lista analizatorów</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Hl7"  asp-action="Index">Lista integracji z Hl7</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Hl7" asp-action="Index">Lista integracji z Hl7</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account"  asp-action="Register">Rejestracja konta</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Rejestracja konta</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOut">Wyloguj</a>
@@ -55,11 +87,6 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - ApkaAnalizator - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

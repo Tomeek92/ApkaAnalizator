@@ -8,15 +8,17 @@ namespace ApkaAnalizator.Controllers
     public class Hl7Controller : Controller
     {
         private readonly IHl7Services _hl7Service;
-        public Hl7Controller(IHl7Services hl7Services)
+        private readonly ILogger<Hl7Controller> _logger;
+        public Hl7Controller(IHl7Services hl7Services , ILogger<Hl7Controller> logger)
         {
             _hl7Service = hl7Services;
+            _logger = logger;
         }
         [Authorize]
-        [HttpDelete]
-        public async Task Delete (ApkaAnalizatorDomain.Enties.HL7 hl7)
+        public async Task<IActionResult> Delete (ApkaAnalizatorDomain.Enties.HL7 hl7)
         {
             await _hl7Service.Delete (hl7);
+            return RedirectToAction("Index");
         }
         [Authorize]
         [HttpPost]
@@ -68,6 +70,19 @@ namespace ApkaAnalizator.Controllers
             {
                 ModelState.AddModelError(string.Empty, $"Błąd podczas aktualizacji analizatora: {ex.Message}");
                 return View(hL7);
+            }
+        }
+        public async Task<IActionResult> Details (Guid id)
+        {
+            try
+            {
+                var hl7 = await _hl7Service.GetHl7ById(id);
+                return View(hl7);
+            }
+            catch(Exception ex) 
+            {
+                _logger.LogError(ex, "Nie znaleziono numer Id dla podłączenia hl7 {id}", id);
+                return NotFound();
             }
         }
     }
