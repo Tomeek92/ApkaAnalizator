@@ -15,14 +15,23 @@ namespace ApkaAnalizator.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(ApkaAnalizatorDomain.Enties.Account login)
         {
-            var user = await _services.Login(login.UserName, login.PasswordHash);
-
-            if (user == null)
+            try
             {
-                return BadRequest("Nieprawidłowe hasło albo login");
-            }
+                var user = await _services.Login(login.UserName, login.PasswordHash);
 
-          return  RedirectToAction("Page", "Home");
+                if (user == null)
+                {
+                    TempData["ErrorMessage"] = "Nie poprawny login lub hasło!";
+                    return RedirectToAction("Login", "Account");
+                }
+                TempData["SuccessMessage"] = "Poprawnie się zalogowałeś!";
+                return RedirectToAction("Page", "Home");
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Wystąpił błąd podczas próby zalogowania. Proszę spróbować później.";
+                return RedirectToAction("Login", "Account");
+            }
         }
         public IActionResult Login()
         {
@@ -32,13 +41,23 @@ namespace ApkaAnalizator.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(ApkaAnalizatorDomain.Enties.Account register)
         {
-            var registerAccount = await _services.Register(register.UserName, register.PasswordHash);
-            if (registerAccount == null)
+            try
             {
-                return BadRequest("Nie zarejestrowano użytkownika");
-            }
+                var registerAccount = await _services.Register(register.UserName, register.PasswordHash);
 
-            return View(registerAccount);
+                if (registerAccount == null)
+                {
+                    TempData["ErrorMessage"] = "Nie zarejestrowano użytkownika. Proszę spróbować ponownie.";
+                    return RedirectToAction("Register", "Account");
+                }
+                TempData["SuccessMessage"] = "Konto zostało poprawnie utworzone.";
+                return RedirectToAction("Register","Account");
+            }
+            catch 
+            {
+                TempData["ErrorMessage"] = "Wystąpił błąd podczas próby rejestracji. Proszę spróbować później.";
+                return RedirectToAction("Register","Account");
+            }
         }
         [Authorize]
         public IActionResult Register()

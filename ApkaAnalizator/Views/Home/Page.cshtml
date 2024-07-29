@@ -10,56 +10,75 @@
         }
 
         .container {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .images {
             display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
+            flex-direction: row;
+            justify-content: center; 
+            align-items: flex-start; 
+            gap: 20px; 
         }
 
-            .images img {
-                width: 65%;
-                height: auto;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+            .image-container img {
+                width: auto;
+                height: 300px; 
+                object-fit: cover; 
             }
 
-        .action-button {
-            padding: 15px 30px;
-            font-size: 18px;
+            .image-container .btn {
+                margin-top: 10px;
+                width: 100%; 
+            }
+
+        .btn-dark {
+            padding: 20px 40px;
+            font-size: 20px; 
             cursor: pointer;
-            background-color: #007BFF;
+            background-color: black;
             color: white;
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            text-align: center; 
         }
 
-            .action-button:hover {
-                background-color: #0056b3;
+            .btn-dark:hover {
+                background-color: #b9273d;
             }
-            .logo-img{
-                width:50%;
-            }
+
+        .logo-img {
+            width: auto;
+            height: 100px; 
+            object-fit: cover; 
+        }
     </style>
 </head>
 <body>
     <img src="~/img/NX-Polska.png" alt="Logo" class="logo-img" />
-    <div class="container">
-        <div class="images">
-            <div class="images">
-                <img src="~/img/257073570_Absolventen-Software-NEXUS-AG-2-876daab2.jpg" alt="Obrazek 2">
-                <button class="action-button">Kliknij mnie</button>
+    <br />
+    <br />
+    <br />
+    <br />
+      @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
             </div>
-            <div class="images">
-                <img src="~/img/188531911_Absolventen-Software-NEXUS-AG-1-4850b4e8.jpg" alt="Obrazek 1">
-                <button class="action-button">Kliknij mnie</button>
-            </div>
-        </div>
+        }
+   <div class="container">
+    <div class="image-container">
+            <img src="~/img/Header_Expertensysteme-9701a543.jpg" alt="Obrazek 2">
+        <a href="@Url.Action("Index", "Analizator")" class="btn btn-dark mb-3">Lista podłączeń analizatorów</a>
     </div>
+    <div class="image-container">
+            <img src="~/img/Heim_Dienstplan-466d16ef.jpg" alt="Obrazek 1">
+        <a href="@Url.Action("Index", "Hl7")" class="btn btn-dark gap-2">Lista podłączeń z Hl7</a>
+    </div>
+</div>
 </body>
 </html>
 

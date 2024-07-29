@@ -100,6 +100,18 @@
 <body>
     <div class="container">
         <h1>Lista podłączeń Analizatorów</h1>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
         <a href="@Url.Action("Analizator", "Home")" class="btn btn-dark mb-3">Dodaj nowe podłączenie</a>
         <div class="search-box">
             <input type="text" id="searchInput" class="form-control" placeholder="Szukaj...">

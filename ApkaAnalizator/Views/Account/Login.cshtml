@@ -80,30 +80,31 @@
 <body>
     <div class="login-form">
         <img src="~/img/NX-Polska.png" alt="Logo" class="logo-img" />
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
         <h1>Logowanie</h1>
         <form asp-controller="Account" asp-action="Login" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <i class="fas fa-user"></i>
                 <label asp-for="@Model.UserName">Nazwa Użytkownika</label>
-                <input asp-for="@Model.UserName" class="form-control" placeholder="Nazwa użytkownika" />
-                <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+                <input asp-for="@Model.UserName" class="form-control" placeholder="Nazwa użytkownika" required/>
             </div>
             <div class="form-group">
                 <i class="fas fa-envelope"></i>
                 <label asp-for="@Model.Email">Email</label>
-                <input asp-for="@Model.Email" class="form-control" placeholder="Email" />
-                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                <input asp-for="@Model.Email" class="form-control" placeholder="Email" required />
             </div>
             <div class="form-group">
                 <i class="fas fa-lock"></i>
                 <label asp-for="@Model.PasswordHash">Hasło</label>
-                <input asp-for="@Model.PasswordHash" type="password" class="form-control" placeholder="Hasło" />
-                <span asp-validation-for="@Model.PasswordHash" class="text-danger"></span>
+                <input asp-for="@Model.PasswordHash" type="password" class="form-control" placeholder="Hasło" required/>
             </div>
             <button type="submit" class="btn btn-primary">Zaloguj</button>
         </form>
     </div>
-    <partial name="_ValidationScriptsPartial" />
 </body>
 </html>
