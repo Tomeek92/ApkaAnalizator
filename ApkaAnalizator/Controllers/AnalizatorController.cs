@@ -18,33 +18,66 @@ namespace ApkaAnalizator.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ApkaAnalizatorDomain.Enties.Analizator analizator)
         {
-            await _analizatorService.Create(analizator);
-            return RedirectToAction("Index");
+            try
+            {
+                await _analizatorService.Create(analizator);
+                TempData["SuccessMessage"] = "Poprawnie utworzyłeś połączenie z analizatorem!";
+                return RedirectToAction("Index","Analizator");
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Nie Poprawnie utworzyłeś połączenie z analizatorem!";
+                return RedirectToAction("Analizator", "Home");
+            }
         }
         [Authorize]
         public async Task<IActionResult> Delete(ApkaAnalizatorDomain.Enties.Analizator analizator)
         {
-            await _analizatorService.Delete(analizator);
-            return RedirectToAction("Index");
+            try
+            {
+                await _analizatorService.Delete(analizator);
+                TempData["SuccessMessage"] = "Poprawnie usunąłeś połączenie z analizatorem!";
+                return RedirectToAction("Index","Analizator");
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Nie Poprawnie usunąłeś połączenie z analizatorem!";
+                return RedirectToAction("Index", "Analizator");
+            }
         }
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            var analizatorList = await _analizatorService.GetAll();
-            return View(analizatorList);
+            try
+            {
+                var analizatorList = await _analizatorService.GetAll();
+                return View(analizatorList);
+            }
+            catch 
+            {
+                return BadRequest("Wystąpił problem podczas pobierania listy podłączeń analizatorów z bazą danych spróbuj ponownie później"); 
+            }
         }
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
-            var analizator = await _analizatorService.GetAnalizatorById(id);
-
-            if (analizator == null)
+            try
             {
-                return NotFound();
-            }
+                var analizator = await _analizatorService.GetAnalizatorById(id);
 
-            return View(analizator);
+                if (analizator == null)
+                {
+                    TempData["ErrorMessage"] = "Nie znaleziono takiego podłączenia w bazie danych! spróbuj ponownie poźniej!";
+                    return RedirectToAction("Index", "Analizator");
+                }
+                return View(analizator);
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Nieoczekiwany błąd skontaktuj się z administratorem";
+                return RedirectToAction("Index", "Analizator");
+            }
         }
         [Authorize]
         [HttpPost]
@@ -53,7 +86,8 @@ namespace ApkaAnalizator.Controllers
         {
             if (id != analizator.Id)
             {
-                return BadRequest();
+                TempData["ErrorMessage"] = "Złe przypisanie Id do podłączenia!";
+                return RedirectToAction("Index", "Analizator");
             }
 
             if (!ModelState.IsValid)
@@ -64,12 +98,13 @@ namespace ApkaAnalizator.Controllers
             try
             {
                 await _analizatorService.UpdateAnalizator(analizator);
-                return RedirectToAction("Index");
+                TempData["SuccessMessage"] = "Poprawnie zapisałeś zmiany!";
+                return RedirectToAction("Index","Analizator");
             }
-            catch (Exception ex)
+            catch
             {
-                ModelState.AddModelError(string.Empty, $"Błąd podczas aktualizacji analizatora: {ex.Message}");
-                return View(analizator);
+                TempData["ErrorMessage"] = "Nieoczekiwany błąd skontaktuj się z administratorem";
+                return RedirectToAction("Index", "Analizator");
             }
         }
         public async Task<IActionResult> Details(Guid id)
@@ -79,10 +114,10 @@ namespace ApkaAnalizator.Controllers
                 var analizator = await _analizatorService.GetAnalizatorById(id);
                 return View(analizator);
             }
-            catch(Exception ex)
+            catch
             {
-                _logger.LogError(ex, "Nie znaleziono Id dla tego analizatora {id}", id);
-                return NotFound();
+                TempData["ErrorMessage"] = "Nieoczekiwany błąd skontaktuj się z administratorem";
+                return RedirectToAction("Index", "Analizator");
             }
         }
     }
