@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApkaAnalizator", "ApkaAnalizator\ApkaAnalizator.csproj", "{C9C0D63A-80DB-46BF-A396-CAA93B6E2A06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApkaAnalizatorDomain", "ApkaAnalizatorDomain\ApkaAnalizatorDomain.csproj", "{53DCDDD6-5E41-48C1-81C2-085E8EDFD40E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkaAnalizatorDomain", "ApkaAnalizatorDomain\ApkaAnalizatorDomain.csproj", "{53DCDDD6-5E41-48C1-81C2-085E8EDFD40E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApkaAnalizatorApplication", "ApkaAnalizatorApplication\ApkaAnalizatorApplication.csproj", "{C6CBD4C3-F175-42D0-94A5-A87D327CC1A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkaAnalizatorApplication", "ApkaAnalizatorApplication\ApkaAnalizatorApplication.csproj", "{C6CBD4C3-F175-42D0-94A5-A87D327CC1A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApkaAnalizatorInfrastructure", "ApkaAnalizatorInfrastructure\ApkaAnalizatorInfrastructure.csproj", "{C285888A-1279-4813-8C39-901E82E39DCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkaAnalizatorInfrastructure", "ApkaAnalizatorInfrastructure\ApkaAnalizatorInfrastructure.csproj", "{C285888A-1279-4813-8C39-901E82E39DCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkaAnalizatorUI", "ApkaAnalizatorBlazorUI\ApkaAnalizatorUI.csproj", "{F8131C4C-FF1E-42A1-A5A7-20AFF1053CFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkaAnalizatorAPI", "ApkaAnalizatorAPI\ApkaAnalizatorAPI.csproj", "{67A389BE-8BA0-41A4-857A-EDC762367575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C9C0D63A-80DB-46BF-A396-CAA93B6E2A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9C0D63A-80DB-46BF-A396-CAA93B6E2A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9C0D63A-80DB-46BF-A396-CAA93B6E2A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9C0D63A-80DB-46BF-A396-CAA93B6E2A06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53DCDDD6-5E41-48C1-81C2-085E8EDFD40E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53DCDDD6-5E41-48C1-81C2-085E8EDFD40E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53DCDDD6-5E41-48C1-81C2-085E8EDFD40E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +31,14 @@ Global
 		{C285888A-1279-4813-8C39-901E82E39DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C285888A-1279-4813-8C39-901E82E39DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C285888A-1279-4813-8C39-901E82E39DCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8131C4C-FF1E-42A1-A5A7-20AFF1053CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8131C4C-FF1E-42A1-A5A7-20AFF1053CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8131C4C-FF1E-42A1-A5A7-20AFF1053CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8131C4C-FF1E-42A1-A5A7-20AFF1053CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67A389BE-8BA0-41A4-857A-EDC762367575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67A389BE-8BA0-41A4-857A-EDC762367575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67A389BE-8BA0-41A4-857A-EDC762367575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67A389BE-8BA0-41A4-857A-EDC762367575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

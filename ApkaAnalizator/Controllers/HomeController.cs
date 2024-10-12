@@ -13,22 +13,22 @@ namespace ApkaAnalizator.Controllers
         {
             _logger = logger;
         }
-        [Authorize]
+
         public IActionResult Index()
         {
             return View();
         }
-        [Authorize]
+
         public IActionResult Privacy()
         {
             return View();
         }
-        [Authorize]
+
         public IActionResult Analizator()
         {
             return View();
         }
-        [Authorize]
+
         public IActionResult Hl7()
         {
             return View();

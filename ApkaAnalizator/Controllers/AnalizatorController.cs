@@ -14,7 +14,7 @@ namespace ApkaAnalizator.Controllers
             _analizatorService = analizatorService;
             _logger = logger;
         }
-        [Authorize]
+
         [HttpPost]
         public async Task<IActionResult> Create(ApkaAnalizatorDomain.Enties.Analizator analizator)
         {
@@ -22,7 +22,7 @@ namespace ApkaAnalizator.Controllers
             {
                 await _analizatorService.Create(analizator);
                 TempData["SuccessMessage"] = "Poprawnie utworzyłeś połączenie z analizatorem!";
-                return RedirectToAction("Index","Analizator");
+                return RedirectToAction("Index", "Analizator");
             }
             catch
             {
@@ -30,14 +30,14 @@ namespace ApkaAnalizator.Controllers
                 return RedirectToAction("Analizator", "Home");
             }
         }
-        [Authorize]
+
         public async Task<IActionResult> Delete(ApkaAnalizatorDomain.Enties.Analizator analizator)
         {
             try
             {
                 await _analizatorService.Delete(analizator);
                 TempData["SuccessMessage"] = "Poprawnie usunąłeś połączenie z analizatorem!";
-                return RedirectToAction("Index","Analizator");
+                return RedirectToAction("Index", "Analizator");
             }
             catch
             {
@@ -45,7 +45,7 @@ namespace ApkaAnalizator.Controllers
                 return RedirectToAction("Index", "Analizator");
             }
         }
-        [Authorize]
+
         public async Task<IActionResult> Index()
         {
             try
@@ -53,12 +53,12 @@ namespace ApkaAnalizator.Controllers
                 var analizatorList = await _analizatorService.GetAll();
                 return View(analizatorList);
             }
-            catch 
+            catch
             {
-                return BadRequest("Wystąpił problem podczas pobierania listy podłączeń analizatorów z bazą danych spróbuj ponownie później"); 
+                return BadRequest("Wystąpił problem podczas pobierania listy podłączeń analizatorów z bazą danych spróbuj ponownie później");
             }
         }
-        [Authorize]
+
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
@@ -79,9 +79,8 @@ namespace ApkaAnalizator.Controllers
                 return RedirectToAction("Index", "Analizator");
             }
         }
-        [Authorize]
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, Analizator analizator)
         {
             if (id != analizator.Id)
@@ -99,7 +98,7 @@ namespace ApkaAnalizator.Controllers
             {
                 await _analizatorService.UpdateAnalizator(analizator);
                 TempData["SuccessMessage"] = "Poprawnie zapisałeś zmiany!";
-                return RedirectToAction("Index","Analizator");
+                return RedirectToAction("Index", "Analizator");
             }
             catch
             {

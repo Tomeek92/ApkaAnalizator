@@ -37,7 +37,7 @@ namespace ApkaAnalizator.Controllers
         {
             return View();
         }
-        [Authorize]
+
         [HttpPost]
         public async Task<IActionResult> Register(ApkaAnalizatorDomain.Enties.Account register)
         {
@@ -51,23 +51,23 @@ namespace ApkaAnalizator.Controllers
                     return RedirectToAction("Register", "Account");
                 }
                 TempData["SuccessMessage"] = "Konto zostało poprawnie utworzone.";
-                return RedirectToAction("Register","Account");
+                return RedirectToAction("Register", "Account");
             }
-            catch 
+            catch
             {
                 TempData["ErrorMessage"] = "Wystąpił błąd podczas próby rejestracji. Proszę spróbować później.";
-                return RedirectToAction("Register","Account");
+                return RedirectToAction("Register", "Account");
             }
         }
-        [Authorize]
+
         public IActionResult Register()
         {
             return View();
         }
-        [Authorize]
+
         public async Task<IActionResult> LogOut()
         {
-           await _services.Logout();
+            await _services.Logout();
             return RedirectToAction("Login", "Account");
         }
     }

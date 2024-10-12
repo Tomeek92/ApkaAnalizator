@@ -1,5 +1,6 @@
 ﻿using ApkaAnalizatorDomain.Enties;
 using ApkaAnalizatorDomain.Interfaces;
+using ApkaAnalizatorInfrastructure.DbContext;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ApkaAnalizatorInfrastructure.Repository
 {
-    
+
     public class AccountRepository : IAccountRepository
     {
         private readonly ApkaAnalizatorDbContext _context;
