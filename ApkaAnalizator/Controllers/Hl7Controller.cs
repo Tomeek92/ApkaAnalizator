@@ -9,31 +9,30 @@ namespace ApkaAnalizator.Controllers
     {
         private readonly IHl7Services _hl7Service;
         private readonly ILogger<Hl7Controller> _logger;
-        public Hl7Controller(IHl7Services hl7Services , ILogger<Hl7Controller> logger)
+        public Hl7Controller(IHl7Services hl7Services, ILogger<Hl7Controller> logger)
         {
             _hl7Service = hl7Services;
             _logger = logger;
         }
-        [Authorize]
-        public async Task<IActionResult> Delete (ApkaAnalizatorDomain.Enties.HL7 hl7)
+        public async Task<IActionResult> Delete(ApkaAnalizatorDomain.Enties.HL7 hl7)
         {
-            await _hl7Service.Delete (hl7);
+            await _hl7Service.Delete(hl7);
             return RedirectToAction("Index");
         }
-        [Authorize]
+
         [HttpPost]
         public async Task<IActionResult> Create(ApkaAnalizatorDomain.Enties.HL7 hl7)
         {
             await _hl7Service.Create(hl7);
             return RedirectToAction("Index");
         }
-        [Authorize]
+
         public async Task<IActionResult> Index()
         {
             var analizatorList = await _hl7Service.GetAll();
             return View(analizatorList);
         }
-        [Authorize]
+
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
@@ -46,9 +45,9 @@ namespace ApkaAnalizator.Controllers
 
             return View(analizator);
         }
-        [Authorize]
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Edit(Guid id, HL7 hL7)
         {
             if (id != hL7.Id)
@@ -72,14 +71,14 @@ namespace ApkaAnalizator.Controllers
                 return View(hL7);
             }
         }
-        public async Task<IActionResult> Details (Guid id)
+        public async Task<IActionResult> Details(Guid id)
         {
             try
             {
                 var hl7 = await _hl7Service.GetHl7ById(id);
                 return View(hl7);
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 _logger.LogError(ex, "Nie znaleziono numer Id dla podłączenia hl7 {id}", id);
                 return NotFound();

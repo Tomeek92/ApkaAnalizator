@@ -1,0 +1,6 @@
+@ApkaAnalizatorAPI_HostAddress = http://localhost:5033
+
+GET {{ApkaAnalizatorAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

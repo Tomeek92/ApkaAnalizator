@@ -5,6 +5,7 @@ using ApkaAnalizatorInfrastructure.Repository;
 using ApkaAnalizatorDomain.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using ApkaAnalizatorDomain.Enties;
+using ApkaAnalizatorInfrastructure.DbContext;
 
 namespace ApkaAnalizatorInfrastructure.Extensions
 {

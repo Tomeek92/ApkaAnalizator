@@ -1,5 +1,6 @@
 ﻿using ApkaAnalizatorDomain.Enties;
 using ApkaAnalizatorDomain.Interfaces;
+using ApkaAnalizatorInfrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
