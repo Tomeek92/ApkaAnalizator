@@ -1,6 +1,9 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Command.HL7.Create
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Command.HL7.Create
 {
-    internal class CreateHL7Command
+    public class CreateHL7Command : HL7DTO, IRequest
     {
     }
 }

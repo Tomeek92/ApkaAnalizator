@@ -1,6 +1,9 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Queries.Account.GetLoggedAccount
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Queries.Account.GetLoggedAccount
 {
-    internal class GetLoggedAccountQuery
+    public class GetLoggedAccountQuery : IRequest<AccountDTO>
     {
     }
 }

@@ -1,6 +1,11 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Command.Account.Create
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Command.Account.Create
 {
-    internal class CreateAccountCommand
+    public class CreateAccountCommand : AccountDTO, IRequest
     {
+
+
     }
 }

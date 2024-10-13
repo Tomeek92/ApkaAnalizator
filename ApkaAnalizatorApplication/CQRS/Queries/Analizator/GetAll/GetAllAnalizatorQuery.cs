@@ -1,6 +1,9 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Queries.Analizator.GetAll
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Queries.Analizator.GetAll
 {
-    internal class GetAllAnalizatorQuery
+    public class GetAllAnalizatorQuery : IRequest<List<AnalizatorDTO>>
     {
     }
 }

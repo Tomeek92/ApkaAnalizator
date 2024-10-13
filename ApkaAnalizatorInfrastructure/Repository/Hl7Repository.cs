@@ -27,7 +27,7 @@ namespace ApkaAnalizatorInfrastructure.Repository
             _context.Remove(hl7);
             await _context.SaveChangesAsync();
         }
-        public async Task<IEnumerable<HL7>> GetAll() =>
+        public async Task<List<HL7>> GetAll() =>
         await _context.HL7s.ToListAsync();
         public async Task<HL7> GetHl7ById(Guid id)
         {

@@ -1,6 +1,9 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Command.Analizator.Create
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Command.Analizator.Create
 {
-    internal class CreateAnalizatorCommand
+    public class CreateAnalizatorCommand : AnalizatorDTO, IRequest
     {
     }
 }
