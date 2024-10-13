@@ -2,11 +2,6 @@
 using ApkaAnalizatorDomain.Interfaces;
 using ApkaAnalizatorInfrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApkaAnalizatorInfrastructure.Repository
 {
@@ -20,13 +15,13 @@ namespace ApkaAnalizatorInfrastructure.Repository
         public async Task Create(Analizator analizator)
         {
             _context.Add(analizator);
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
-        public async Task<IEnumerable<Analizator>> GetAll() =>
+        public async Task<List<Analizator>> GetAll() =>
          await _context.Analizators.ToListAsync();
         public async Task<Analizator> GetAnalizatorById(Guid id)
         {
-         return await _context.Analizators.FirstOrDefaultAsync(a => a.Id == id);
+            return await _context.Analizators.FirstOrDefaultAsync(a => a.Id == id);
         }
         public async Task UpdateAnalizator(Analizator analizator)
         {
@@ -36,8 +31,8 @@ namespace ApkaAnalizatorInfrastructure.Repository
         public async Task Delete(Analizator analizator)
         {
             _context.Remove(analizator);
-            await _context.SaveChangesAsync(); 
+            await _context.SaveChangesAsync();
         }
-       
+
     }
 }

@@ -1,6 +1,9 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Command.Account.Update
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Command.Account.Update
 {
-    internal class UpdateAccountCommand
+    public class UpdateAccountCommand : AccountDTO, IRequest
     {
     }
 }

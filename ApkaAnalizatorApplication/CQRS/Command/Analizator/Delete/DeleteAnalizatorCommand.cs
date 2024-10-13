@@ -1,6 +1,9 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Command.Analizator.Delete
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Command.Analizator.Delete
 {
-    internal class DeleteAnalizatorCommand
+    public class DeleteAnalizatorCommand : AnalizatorDTO, IRequest
     {
     }
 }

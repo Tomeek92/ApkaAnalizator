@@ -1,6 +1,9 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Command.HL7.Delete
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Command.HL7.Delete
 {
-    internal class DeleteHL7Command
+    public class DeleteHL7Command : HL7DTO, IRequest
     {
     }
 }

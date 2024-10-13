@@ -1,6 +1,10 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Queries.HL7.GetAll
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Queries.HL7.GetAll
 {
-    internal class GetAllHL7Query
+    public class GetAllHL7Query : IRequest<List<HL7DTO>>
     {
+
     }
 }

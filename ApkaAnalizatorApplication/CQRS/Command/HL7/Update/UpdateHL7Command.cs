@@ -1,6 +1,9 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Command.HL7.Update
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Command.HL7.Update
 {
-    internal class UpdateHL7Command
+    public class UpdateHL7Command : HL7DTO, IRequest
     {
     }
 }

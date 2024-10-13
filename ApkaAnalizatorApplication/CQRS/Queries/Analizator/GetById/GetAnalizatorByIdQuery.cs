@@ -1,6 +1,14 @@
-﻿namespace ApkaAnalizatorApplication.CQRS.Queries.Analizator.GetById
+﻿using ApkaAnalizatorApplication.DTO;
+using MediatR;
+
+namespace ApkaAnalizatorApplication.CQRS.Queries.Analizator.GetById
 {
-    internal class GetAnalizatorByIdQuery
+    public class GetAnalizatorByIdQuery : IRequest<AnalizatorDTO>
     {
+        public Guid Id { get; set; }
+        public GetAnalizatorByIdQuery(Guid id)
+        {
+            Id = id;
+        }
     }
 }
