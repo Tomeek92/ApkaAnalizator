@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApkaAnalizatorApplication",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApkaAnalizatorInfrastructure", "ApkaAnalizatorInfrastructure\ApkaAnalizatorInfrastructure.csproj", "{C285888A-1279-4813-8C39-901E82E39DCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkaAnalizatorUI", "ApkaAnalizatorBlazorUI\ApkaAnalizatorUI.csproj", "{F8131C4C-FF1E-42A1-A5A7-20AFF1053CFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApkaAnalizatorUI", "ApkaAnalizatorBlazorUI\ApkaAnalizatorUI.csproj", "{F8131C4C-FF1E-42A1-A5A7-20AFF1053CFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApkaAnalizatorAPI", "ApkaAnalizatorAPI\ApkaAnalizatorAPI.csproj", "{67A389BE-8BA0-41A4-857A-EDC762367575}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApkaAnalizatorAPI", "ApkaAnalizatorAPI\ApkaAnalizatorAPI.csproj", "{67A389BE-8BA0-41A4-857A-EDC762367575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
