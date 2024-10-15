@@ -33,7 +33,7 @@ namespace ApkaAnalizatorInfrastructure.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception($"Błąd podczas znajdywania użytkownika w bazie danych");
+                throw new Exception($"Błąd podczas znajdywania użytkownika w bazie danych: {ex.Message}");
             }
         }
         public async Task<Account> Login(string userName, string password)
@@ -42,9 +42,16 @@ namespace ApkaAnalizatorInfrastructure.Repository
             if (result.Succeeded)
             {
                 var user = await _signInManager.UserManager.FindByNameAsync(userName);
+                if (user == null)
+                {
+                    throw new KeyNotFoundException("Nie odnaleziono użytkownika");
+                }
                 return user;
             }
-            return null;
+            else
+            {
+                throw new Exception("Błąd podczas logowania");
+            }
         }
         public async Task Register(Account account, string password)
         {
@@ -66,7 +73,7 @@ namespace ApkaAnalizatorInfrastructure.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception($"Błąd podczas aktualizowaniu danych użytkownika");
+                throw new Exception($"Błąd podczas aktualizowaniu danych użytkownika: {ex.Message}");
             }
         }
         public async Task Logout()

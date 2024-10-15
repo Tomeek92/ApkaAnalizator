@@ -37,7 +37,7 @@ namespace ApkaAnalizatorAPI.Controllers
                 return StatusCode(500, $"Nieoczekiwany błąd: {ex.Message} ");
             }
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteAccount/{id}")]
         public async Task<IActionResult> Delete(string id)
         {
             try
